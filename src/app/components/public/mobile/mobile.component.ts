@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { CampaignService } from 'src/app/services/ads/campaign.service';
 import { NgForm } from '@angular/forms';
 import { MobileModalComponent } from '../shared/mobile-modal/mobile-modal.component';
+import { ParticleConfigDesktop, ParticleStyle, ParticleConfigMobile } from '../../../enviroments/particles.config';
 
 @Component({
   selector: 'app-mobile',
@@ -13,17 +14,28 @@ import { MobileModalComponent } from '../shared/mobile-modal/mobile-modal.compon
 })
 export class MobileComponent implements OnInit, OnDestroy {
   Device: SizeDevice;
+  public ParticleStyle: object = {};
+  public particles: object | any = {};
+  public width: number = 100;
+  public height: number = 100;
   constructor(@Inject(DOCUMENT) private document: Document,
   public dialog: MatDialog, private _adService: CampaignService) { }
 
   ngOnInit() {
+    // Global styles
     this.document.body.removeAttribute('class');
     this.document.body.classList.add('ads-theme-mobile');
     this.Device = {
       width: window.innerWidth,
       height: window.innerHeight
     };
-    console.log(this.Device);
+    if (this.Device.width <= 480) {
+      this.ParticleStyle = ParticleStyle;
+      this.particles = ParticleConfigMobile;
+    } else {
+      this.ParticleStyle = ParticleStyle;
+      this.particles = ParticleConfigDesktop;
+    }
   }
   ngOnDestroy() {
     this.document.body.removeAttribute('class');

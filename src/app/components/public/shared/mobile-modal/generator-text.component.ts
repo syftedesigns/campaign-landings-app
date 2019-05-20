@@ -12,6 +12,7 @@ constructor(private bottomSheetRef: MatBottomSheetRef<GeneratorTextComponent>) {
   ngOnInit() {
   }
   getHelperString(eventHelper: string): void {
+    console.log(eventHelper);
     this.bottomSheetRef.dismiss(eventHelper);
     return;
   }

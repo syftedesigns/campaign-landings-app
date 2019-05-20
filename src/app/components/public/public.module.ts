@@ -7,7 +7,7 @@ import { AngularMaterialModule } from '../../angular-material.module';
 import { FormsModule } from '@angular/forms';
 import { PublicRoutingModule } from './public.routes';
 import { MobileComponent } from './mobile/mobile.component';
-
+import { ParticlesModule } from 'angular-particle';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +16,8 @@ import { MobileComponent } from './mobile/mobile.component';
     RouterModule,
     AngularMaterialModule,
     FormsModule,
-    PublicRoutingModule
+    PublicRoutingModule,
+    ParticlesModule
   ],
   declarations: [
     MobileComponent
